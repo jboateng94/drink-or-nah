@@ -1,0 +1,14 @@
+{
+  "name": "project2",
+  "version": "1.0.0",
+  "description": "A site/API where users can pick whether they'd drink (or not) a beer from within the database",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeremy Boateng",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
