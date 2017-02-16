@@ -6,8 +6,8 @@ var BeerSchema = mongoose.Schema({
   tagline: String,
   abv: Number,
   description: String,
-  food_pairing: [String],
-  drinkOrNah: Boolean
+  // food_pairing: [String],
+  // drinkOrNah: Boolean
 })
 
 module.exports = mongoose.model('Beer', BeerSchema);

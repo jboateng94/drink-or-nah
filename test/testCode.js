@@ -57,7 +57,7 @@ describe('Beers', function (){
 	    });
 	});
 
-	it('should add a SINGLE car on / POST' , function(done){
+	it('should add a SINGLE beer on / POST' , function(done){
 	    var request = chai.request(app);
 	    request.post('/')
 	      .set('content-type', 'application/x-www-form-urlencoded')
@@ -65,15 +65,14 @@ describe('Beers', function (){
 	        name: "Pawtucket Patriot",
 	        description: "like duff but family guy",
 	        image_url: "https://legendsofbeer.files.wordpress.com/2008/12/pawale.png",
-	        abv: 5.2,
-
+	        abv: 5.2
 	      })
 	      .end(function(err, res){
 	        res.should.have.status(200);
 	        res.should.be.html;
-	        res.text.should.match(/All cars/);
+	        res.text.should.match(/All teh beers/);
 	        request
-	          .get('/123')
+	          .get('/'+ beer._id)
 	          .end(function(err, res){
 	            res.should.have.status(200);
 	            res.should.be.html;

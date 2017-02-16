@@ -30,8 +30,7 @@ function newBeers(req , res) {
 		name: "",
 		tagline: "",
 		abv: 0,
-		description: "",
-		food_pairing: []
+		description: ""
 	}
 
   res.render("beers/new" , {
