@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var CarSchema = mongoose.Schema({
+var BeerSchema = mongoose.Schema({
   image_url: String,
   name: String,
   tagline: String,
@@ -10,4 +10,4 @@ var CarSchema = mongoose.Schema({
   drinkOrNah: Boolean
 })
 
-module.exports = mongoose.model('Car', CarSchema);
+module.exports = mongoose.model('Beer', BeerSchema);

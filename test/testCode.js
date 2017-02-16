@@ -18,29 +18,35 @@ describe('Beers', function (){
 		food_pairing: ["Donuts","More Duff"]
 	})
 
-	beforeEach(function() {
+	beforeEach(function(done) {
 		beer.save(function(err, newBeer) {
 	      if (err) return console.log(err);
 	      console.log("made newBeer with id " + newBeer.id);
 	      beer.id = newBeer.id;
-	  })
+	      console.log("before");
+	      done();
+	  	})
 	})
 
-	afterEach(function() {
+	afterEach(function(done) {
 		Beer.findByIdAndRemove(beer.id, function(err) {
 			if (err) return console.log(err);
+			done();
 		})
 	})
+
+	// Put SHOW test HERE
 
 	it('should list ALL beers on / GET', function(done) {
 	    var request = chai.request(app);
 	    request
 	      .get('/')
 	      .end(function(err, res){
+	      	console.log(res);
 	        res.should.have.status(200);
 	        res.should.be.html;
-	        res.text.should.match("Duff Beer");
-	        res.text.should.match("More Duff");
+	        res.text.should.match(/Duff Beer/);
+	        res.text.should.match(/More Duff/);
 	        done();
 	    });
 	});

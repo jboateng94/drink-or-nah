@@ -1,11 +1,12 @@
-var Beer = require('../models/Beer');
+var Beer = require('../models/beer');
 
 function indexBeers(req, res) {
-	Car.find({} , function(err, cars) {
+	console.log("indexin");
+	Beer.find({} , function(err, beers) {
 		if(err) return res.status(500).send(err);
 		res.render("beers/index" , {
-			title: "Cars",
-			cars: cars
+			title: "All teh beers",
+			beers: beers
 		});
 	});
 };

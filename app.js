@@ -1,16 +1,17 @@
 var express = require('express')
 var app = express();
-var router = express.Router();
+var router = require('./config/routes');
 var mongoose = require('mongoose')
 
 var port = process.env.PORT || 3000;
 
-
-app.use(router);
-
 mongoose.connect('mongodb://localhost/beer', function() {
 	console.log('beer database connected.')
 })
+
+app.set('view engine', 'ejs');
+
+app.use(router);
 
 app.listen(port, function() {
 	console.log('Drink or Nah is now live on port ' + port);
