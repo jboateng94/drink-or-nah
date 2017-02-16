@@ -8,9 +8,9 @@ var port = process.env.PORT || 3000;
 
 app.use(router);
 
-// mongoose.connect('mongodb://localhost/autotrader', function() {
-// 	console.log('database connected.')
-// })
+mongoose.connect('mongodb://localhost/beer', function() {
+	console.log('beer database connected.')
+})
 
 app.listen(port, function() {
 	console.log('Drink or Nah is now live on port ' + port);

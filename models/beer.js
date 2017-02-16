@@ -4,7 +4,7 @@ var CarSchema = mongoose.Schema({
   image_url: String,
   name: String,
   tagline: String,
-  abv: 
+  abv: Number,
   description: String,
   food_pairing: [String]
 })
