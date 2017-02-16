@@ -3,6 +3,7 @@ var Beer = require('../models/beer');
 function indexBeers(req, res) {
 	console.log("indexin");
 	Beer.find({} , function(err, beers) {
+		console.log(beers)
 		if(err) return res.status(500).send(err);
 		res.render("beers/index" , {
 			title: "All teh beers",
@@ -12,14 +13,13 @@ function indexBeers(req, res) {
 };
 
 function showBeers(req, res) {
-	Post.findById(req.params.id , function(err, post) {
+	Beer.findById(req.params.id , function(err, beer) {
 		// check for errors or for no object found
-		if(!post) return res.status(404).send("Not found");
+		if(!beer) return res.status(404).send("Not found");
       	if(err) return res.status(500).send(err);
-  
-	    res.render("posts/show" , {
-	    	title: "Post",
-	        post: post
+	    res.render("beers/show",{
+	    	title: "beer",
+	        beer: beer
 	    });
 	});
 }

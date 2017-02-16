@@ -21,9 +21,7 @@ describe('Beers', function (){
 	beforeEach(function(done) {
 		beer.save(function(err, newBeer) {
 	      if (err) return console.log(err);
-	      console.log("made newBeer with id " + newBeer.id);
 	      beer.id = newBeer.id;
-	      console.log("before");
 	      done();
 	  	})
 	})
@@ -37,11 +35,11 @@ describe('Beers', function (){
 
 	it('should list a SINGLE car on /<id> GET', function(done) {
 	    chai.request(app)
-	      .get('/' + car.id)
+	      .get('/' + beer.id)
 	      .end(function(err, res){
 	        res.should.have.status(200);
 	        res.should.be.html;
-	        res.text.should.match(/Post 1/);
+	        res.text.should.match(/Duff Beer/);
 	        done();
 	    });
 	});
@@ -54,9 +52,10 @@ describe('Beers', function (){
 	      	console.log(res);
 	        res.should.have.status(200);
 	        res.should.be.html;
-	        res.text.should.match(/Duff Beer/);
-	        res.text.should.match(/More Duff/);
+	        res.text.should.match(/All teh beers/);
 	        done();
 	    });
 	});
+
+	
 })

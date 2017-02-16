@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var beersController = require('../controllers/beers');
-console.log('routing');
+
 router.route('/')
   .get(beersController.index)
   .post(beersController.create);
