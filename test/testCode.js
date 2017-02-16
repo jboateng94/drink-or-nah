@@ -87,5 +87,27 @@ describe('Beers', function (){
 	    });
 	});
 
+	// describe a test for PUT
+	it('should update a SINGLE car on /<id> PUT' , function(done){
+	  var request = chai.request(app);
+	  request.put('/' + car.id)
+	    .set('content-type', 'application/x-www-form-urlencoded')
+	    .send({'color': 'blue', 'miles': 70000})
+	    .end(function(err, res){
+	      res.should.have.status(200);
+	      res.should.be.html;
+	      res.text.should.match(/All cars/);
+	      request
+	        .get('/' + car.id)
+	        .end(function(err, res){
+	          res.should.have.status(200);
+	          res.should.be.html;
+	          res.text.should.match(/blue/);
+	          res.text.should.match(/miles/);
+	          done();
+	        });
+	    });
+	});
+
 
 })
