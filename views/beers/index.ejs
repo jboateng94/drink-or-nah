@@ -3,7 +3,7 @@
 <% for(var i = 0; i < beers.length; i++ ) { %>
  	<% console.log(beers);  %>
   <div>
-  	<img src="<%beers[i].image_url%>">
+  	<img src="<% beers[i].image_url %>">
     <h2><a href="/<%= beers[i].id %>"><%= beers[i].name %></a></h3>
     <p><%= beers[i].tagline %></p>
     <p><%= beers[i].abv %></p>

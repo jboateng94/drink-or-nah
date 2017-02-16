@@ -12,7 +12,16 @@ function indexBeers(req, res) {
 };
 
 function showBeers(req, res) {
-	res.send('show');
+	Post.findById(req.params.id , function(err, post) {
+		// check for errors or for no object found
+		if(!post) return res.status(404).send("Not found");
+      	if(err) return res.status(500).send(err);
+  
+	    res.render("posts/show" , {
+	    	title: "Post",
+	        post: post
+	    });
+	});
 }
 
 function newBeers(req, res) {

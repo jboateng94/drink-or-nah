@@ -35,7 +35,16 @@ describe('Beers', function (){
 		})
 	})
 
-	// Put SHOW test HERE
+	it('should list a SINGLE car on /<id> GET', function(done) {
+	    chai.request(app)
+	      .get('/' + car.id)
+	      .end(function(err, res){
+	        res.should.have.status(200);
+	        res.should.be.html;
+	        res.text.should.match(/Post 1/);
+	        done();
+	    });
+	});
 
 	it('should list ALL beers on / GET', function(done) {
 	    var request = chai.request(app);
