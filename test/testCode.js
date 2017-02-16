@@ -72,12 +72,12 @@ describe('Beers', function (){
 	        res.should.be.html;
 	        res.text.should.match(/All teh beers/);
 	        request
-	          .get('/'+ beer._id)
+	          .get('/')
 	          .end(function(err, res){
 	            res.should.have.status(200);
 	            res.should.be.html;
-	            res.text.should.match(/green/);
-	            res.text.should.match(/micra/);
+	            res.text.should.match(/Pawtucket/);
+	            res.text.should.match(/family/);
 
 	            Car.findByIdAndRemove(123, function(err) {
 	              if (err) return console.log(err);

@@ -14,11 +14,10 @@ function indexBeers(req, res) {
 
 function showBeers(req, res) {
 	Beer.findById(req.params.id , function(err, beer) {
-		// check for errors or for no object found
 		if(!beer) return res.status(404).send("Not found");
       	if(err) return res.status(500).send(err);
 	    res.render("beers/show",{
-	    	title: "beer",
+	    	title: beer.name,
 	        beer: beer
 	    });
 	});
@@ -26,16 +25,17 @@ function showBeers(req, res) {
 
 function newBeers(req , res) {
   var newBeer = {
-		image_url: "",
-		name: "",
-		tagline: "",
-		abv: 0,
-		description: ""
-	}
+  	id: "",
+  	image_url: "",
+	name: "",
+	tagline: "",
+	abv: 0,
+	description: ""
+  }
 
   res.render("beers/new" , {
     title: "New beer entry",
-    car: newBeer
+    beer: newBeer
   });
 }
 

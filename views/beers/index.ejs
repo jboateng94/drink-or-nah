@@ -1,5 +1,6 @@
 
 <%= JSON.stringify(beers) %>
+
 <% for(var i = 0; i < beers.length; i++ ) { %>
  	<% console.log(beers);  %>
   <div>
@@ -8,7 +9,6 @@
     <p><%= beers[i].tagline %></p>
     <p><%= beers[i].abv %></p>
     <p><%= beers[i].description %></p>
-    <p><%= beers[i].food_pairing %></p>
   </div>
 <% } %>
 
