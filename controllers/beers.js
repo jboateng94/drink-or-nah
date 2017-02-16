@@ -1,7 +1,7 @@
 var Beer = require('../models/beer');
 
 function indexBeers(req, res) {
-	console.log("indexin");
+	
 	Beer.find({} , function(err, beers) {
 		console.log(beers)
 		if(err) return res.status(500).send(err);
@@ -24,8 +24,20 @@ function showBeers(req, res) {
 	});
 }
 
-function newBeers(req, res) {
-	res.send('new');
+function newBeers(req , res) {
+  var newBeer = {
+		image_url: "",
+		name: "",
+		tagline: "",
+		abv: "",
+		description: "",
+		food_pairing: []
+	}
+
+  res.render("beers/new" , {
+    title: "New beer entry",
+    car: newCar
+  });
 }
 
 function createBeers(req, res) {
