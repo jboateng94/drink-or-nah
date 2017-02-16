@@ -58,7 +58,15 @@ function editBeers(req, res) {
 }
 
 function updateBeers(req, res) {
-	res.send('update');
+	Car.findByIdAndUpdate(
+	    req.params.id,
+	    { $set:  req.body },
+	    { runValidators: true },
+	    function(err , car){
+	      if(err) return res.status(500).send(err);
+	      res.redirect("/");
+	    }
+	);
 }
 
 function deleteBeers(req, res) {
