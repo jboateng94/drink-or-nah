@@ -16,3 +16,4 @@ app.listen(port, function() {
 	console.log('Drink or Nah is now live on port ' + port);
 })
 
+module.exports = app;
