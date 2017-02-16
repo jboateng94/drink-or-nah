@@ -109,5 +109,21 @@ describe('Beers', function (){
 	    });
 	});
 
+	it('should delete a SINGLE car on /<id> DELETE' , function(done) {
+	  var request = chai.request(app);
+	  request.delete('/' + car.id)
+	    .end(function(err, res){
+	      res.should.have.status(200);
+	      res.should.be.html;
+	      res.text.should.match(/All cars/);
+	      request
+	        .get('/' + car.id)
+	        .end(function(err, res){
+	          res.should.have.status(404);
+	          done();
+	        });
+	    });
+	});
+
 
 })
