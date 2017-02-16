@@ -47,7 +47,14 @@ function createBeers(req, res) {
 }
 
 function editBeers(req, res) {
-	res.send('edit');
+	Beer.findById(req.params.id , function(err, beer) {
+	    if(!beer) return res.status(404).send("Not found");
+	    if(err) return res.status(500).send(err);
+	    res.render("beers/edit" , {
+	      title: "Edit beer info",
+	      beer: beer
+	    });
+	});
 }
 
 function updateBeers(req, res) {
