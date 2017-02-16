@@ -88,36 +88,36 @@ describe('Beers', function (){
 	// });
 
 	// describe a test for PUT
-	it('should update a SINGLE beer on /<id> PUT' , function(done){
+	// it('should update a SINGLE beer on /<id> PUT' , function(done){
+	//   var request = chai.request(app);
+	//   request.put('/' + beer.id)
+	//     .set('content-type', 'application/x-www-form-urlencoded')
+	//     .send({'name': 'slurm', 'abv': 50})
+	//     .end(function(err, res){
+	//       res.should.have.status(200);
+	//       res.should.be.html;
+	//       res.text.should.match(/Can't/);
+	//       request
+	//         .get('/' + beer.id)
+	//         .end(function(err, res){
+	//           res.should.have.status(200);
+	//           res.should.be.html;
+	//           res.text.should.match(/slurm/);
+	//           res.text.should.match(/abv/);
+	//           done();
+	//         });
+	//     });
+	// });
+
+	it('should delete a SINGLE beer on /<id> DELETE' , function(done) {
 	  var request = chai.request(app);
-	  request.put('/' + beer.id)
-	    .set('content-type', 'application/x-www-form-urlencoded')
-	    .send({'name': 'slurm', 'abv': 50})
+	  request.delete('/' + beer.id)
 	    .end(function(err, res){
 	      res.should.have.status(200);
 	      res.should.be.html;
-	      res.text.should.match(/Can't/);
+	      res.text.should.match(/All teh beers/);
 	      request
 	        .get('/' + beer.id)
-	        .end(function(err, res){
-	          res.should.have.status(200);
-	          res.should.be.html;
-	          res.text.should.match(/slurm/);
-	          res.text.should.match(/abv/);
-	          done();
-	        });
-	    });
-	});
-
-	it('should delete a SINGLE car on /<id> DELETE' , function(done) {
-	  var request = chai.request(app);
-	  request.delete('/' + car.id)
-	    .end(function(err, res){
-	      res.should.have.status(200);
-	      res.should.be.html;
-	      res.text.should.match(/All cars/);
-	      request
-	        .get('/' + car.id)
 	        .end(function(err, res){
 	          res.should.have.status(404);
 	          done();
