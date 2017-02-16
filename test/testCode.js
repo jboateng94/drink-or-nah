@@ -30,7 +30,7 @@ describe('Beers', function (){
 		Beer.findByIdAndRemove(beer.id, function(err) {
 			if (err) return console.log(err);
 		})
-	}
+	})
 
 	it('should list ALL beers on / GET', function(done) {
 	    var request = chai.request(app);
@@ -44,5 +44,4 @@ describe('Beers', function (){
 	        done();
 	    });
 	});
-
 })
