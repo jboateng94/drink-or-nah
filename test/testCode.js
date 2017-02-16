@@ -33,7 +33,7 @@ describe('Beers', function (){
 		})
 	})
 
-	it('should list a SINGLE car on /<id> GET', function(done) {
+	it('should list a SINGLE beer on /<id> GET', function(done) {
 	    chai.request(app)
 	      .get('/' + beer.id)
 	      .end(function(err, res){
@@ -57,53 +57,53 @@ describe('Beers', function (){
 	    });
 	});
 
-	it('should add a SINGLE beer on / POST' , function(done){
-	    var request = chai.request(app);
-	    request.post('/')
-	      .set('content-type', 'application/x-www-form-urlencoded')
-	      .send({
-	        name: "Pawtucket Patriot",
-	        description: "like duff but family guy",
-	        image_url: "https://legendsofbeer.files.wordpress.com/2008/12/pawale.png",
-	        abv: 5.2
-	      })
-	      .end(function(err, res){
-	        res.should.have.status(200);
-	        res.should.be.html;
-	        res.text.should.match(/All teh beers/);
-	        request
-	          .get('/')
-	          .end(function(err, res){
-	            res.should.have.status(200);
-	            res.should.be.html;
-	            res.text.should.match(/Pawtucket/);
-	            res.text.should.match(/family/);
+	// it('should add a SINGLE beer on / POST' , function(done){
+	//     var request = chai.request(app);
+	//     request.post('/')
+	//       .set('content-type', 'application/x-www-form-urlencoded')
+	//       .send({
+	//         name: "Pawtucket Patriot",
+	//         description: "like duff but family guy",
+	//         image_url: "https://legendsofbeer.files.wordpress.com/2008/12/pawale.png",
+	//         abv: 5.2
+	//       })
+	//       .end(function(err, res){
+	//         res.should.have.status(200);
+	//         res.should.be.html;
+	//         res.text.should.match(/All teh beers/);
+	//         request
+	//           .get('/')
+	//           .end(function(err, res){
+	//             res.should.have.status(200);
+	//             res.should.be.html;
+	//             res.text.should.match(/Pawtucket/);
+	//             res.text.should.match(/family/);
 
-	            Beer.findByIdAndRemove(123, function(err) {
-	              if (err) return console.log(err);
-	              done();
-	            });
-	        });
-	    });
-	});
+	//             Beer.findByIdAndRemove(123, function(err) {
+	//               if (err) return console.log(err);
+	//               done();
+	//             });
+	//         });
+	//     });
+	// });
 
 	// describe a test for PUT
-	it('should update a SINGLE car on /<id> PUT' , function(done){
+	it('should update a SINGLE beer on /<id> PUT' , function(done){
 	  var request = chai.request(app);
-	  request.put('/' + car.id)
+	  request.put('/' + beer.id)
 	    .set('content-type', 'application/x-www-form-urlencoded')
-	    .send({'color': 'blue', 'miles': 70000})
+	    .send({'name': 'slurm', 'abv': 50})
 	    .end(function(err, res){
 	      res.should.have.status(200);
 	      res.should.be.html;
-	      res.text.should.match(/All cars/);
+	      res.text.should.match(/All beers/);
 	      request
-	        .get('/' + car.id)
+	        .get('/' + beer.id)
 	        .end(function(err, res){
 	          res.should.have.status(200);
 	          res.should.be.html;
-	          res.text.should.match(/blue/);
-	          res.text.should.match(/miles/);
+	          res.text.should.match(/slurm/);
+	          res.text.should.match(/abv/);
 	          done();
 	        });
 	    });

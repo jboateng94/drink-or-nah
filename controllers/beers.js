@@ -58,7 +58,7 @@ function editBeers(req, res) {
 }
 
 function updateBeers(req, res) {
-	Car.findByIdAndUpdate(
+	Beer.findByIdAndUpdate(
 	    req.params.id,
 	    { $set:  req.body },
 	    { runValidators: true },
