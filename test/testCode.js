@@ -96,7 +96,7 @@ describe('Beers', function (){
 	    .end(function(err, res){
 	      res.should.have.status(200);
 	      res.should.be.html;
-	      res.text.should.match(/All beers/);
+	      res.text.should.match(/Can't/);
 	      request
 	        .get('/' + beer.id)
 	        .end(function(err, res){
