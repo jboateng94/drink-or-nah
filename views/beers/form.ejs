@@ -4,7 +4,7 @@
   <textarea name="description" required> <%= beer.description %> </textarea>
   <input type="number" name="abv" value="<%= beer.abv %>" min="0" max="100" required>
 
-  <input type="text" name="image_url" placeholder="Enter a URL for an for the beer " value="<%= beer.image_url %>" required>
+  <input type="text" name="image_url" placeholder="Enter a URL for an for the beer" value="<%= beer.image_url %>" required>
 
   <input type="submit" value="Save beer entry">
   <% if(beer.id != "") { %>

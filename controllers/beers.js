@@ -29,19 +29,22 @@ function newBeers(req , res) {
 		image_url: "",
 		name: "",
 		tagline: "",
-		abv: "",
+		abv: 0,
 		description: "",
 		food_pairing: []
 	}
 
   res.render("beers/new" , {
     title: "New beer entry",
-    car: newCar
+    car: newBeer
   });
 }
 
 function createBeers(req, res) {
-	res.send('create');
+	Beer.create(req.body, function(err, beer){
+		if(err) return res.status(500).send(err);
+		res.redirect("/");
+	});
 }
 
 function editBeers(req, res) {
