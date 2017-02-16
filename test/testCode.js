@@ -79,7 +79,7 @@ describe('Beers', function (){
 	            res.text.should.match(/Pawtucket/);
 	            res.text.should.match(/family/);
 
-	            Car.findByIdAndRemove(123, function(err) {
+	            Beer.findByIdAndRemove(123, function(err) {
 	              if (err) return console.log(err);
 	              done();
 	            });
