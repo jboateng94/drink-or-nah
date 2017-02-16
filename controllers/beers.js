@@ -70,7 +70,9 @@ function updateBeers(req, res) {
 }
 
 function deleteBeers(req, res) {
-	res.send('delete');
+	Car.findByIdAndRemove(req.params.id , function(err) {
+		res.redirect("/");
+	});
 }
 
 module.exports = {
