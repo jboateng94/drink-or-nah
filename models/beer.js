@@ -6,7 +6,8 @@ var CarSchema = mongoose.Schema({
   tagline: String,
   abv: Number,
   description: String,
-  food_pairing: [String]
+  food_pairing: [String],
+  drinkOrNah: Boolean
 })
 
 module.exports = mongoose.model('Car', CarSchema);
