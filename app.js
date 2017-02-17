@@ -41,6 +41,13 @@ app.use(session({
 
 app.use(flash());
 
+app.use(function(req, res, next){
+    // res.locals will be available in every template
+    res.locals.errors = req.flash('error');
+    console.log(res.locals.errors);
+    next();
+});
+
 app.use(router);
 
 app.listen(port, function() {
