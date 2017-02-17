@@ -1,20 +1,10 @@
 var User = require('../models/user');
 
+// NEW ( AKA Registration )
 function newUser(req,res) {
 
-  // create an empty user
-  var newUser = {
-    id: "",
-    first_name: "",
-    last_name: "",
-    email: "",
-    password: ""
-  }
+  res.render('users/new' , {title:"Register"});
 
-  res.render("users/new" , {
-    title: "Register",
-    user: newUser
-  });
 }
 
 // CREATE - Handles registrations
@@ -32,9 +22,10 @@ function createUser(req,res){
     res.redirect("/");
 
   });
+
 }
 
 module.exports = {
-	new: newUser,
-	create: createUser
+  new: newUser,
+  create: createUser
 }
