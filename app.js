@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var flash = require('connect-flash');
 
 var port = process.env.PORT || 3000;
 
@@ -38,9 +39,7 @@ app.use(session({
   secret: 'spartasupersecretkey'
 }));
 
-
-
-
+app.use(flash());
 
 app.use(router);
 
