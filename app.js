@@ -1,15 +1,23 @@
 var express = require('express')
 var app = express();
+
 var router = require('./config/routes');
+
 var mongoose = require('mongoose')
+
 var layouts = require('express-ejs-layouts');
+
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+
 var flash = require('connect-flash');
 
 var port = process.env.PORT || 3000;
+
+var User = require('./models/user')
 
 mongoose.connect('mongodb://localhost/beer', function() {
 	console.log('beer database connected.')
@@ -38,6 +46,34 @@ app.use(session({
   saveUninitialized: true,
   secret: 'spartasupersecretkey'
 }));
+
+
+// load logged in user
+app.use(function(req,res,next) {
+
+  // no user id? just move on
+  if(!req.session.user) {
+  	 res.locals.user = false;
+    next();
+  } else {
+
+    // load the user with the ID in the session
+    User.findById(req.session.user , function(err, user){
+      
+      if(user) {
+        // add the user to the request object
+        req.user = user;
+        // add it to locals so we can use it in all templates
+        res.locals.user = user;
+      } else {
+        // couldn't find it... that's weird. clear the session
+        req.session.user = null;
+      }
+
+      next(err);
+    });
+  }
+});
 
 app.use(flash());
 
