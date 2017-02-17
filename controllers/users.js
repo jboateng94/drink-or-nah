@@ -2,7 +2,19 @@ var User = require('../models/user');
 
 function newUser(req,res) {
 
-  res.render('users/new' , {title:"Register"});
+  // create an empty user
+  var newUser = {
+    id: "",
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: ""
+  }
+
+  res.render("posts/new" , {
+    title: "Register",
+    user: newUser
+  });
 }
 
 // CREATE - Handles registrations
