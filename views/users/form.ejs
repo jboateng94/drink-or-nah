@@ -1,20 +1,15 @@
-<form action="/users" method="POST">
-  <div>
-    <label>First Name</label>
-    <input type="text" name="first_name" required>
-  </div>
-  <div>
-    <label>Last Name</label>
-    <input type="text" name="last_name" required="">
-  </div>
-  <div>
-    <label>Email</label>
-    <input type="text" name="email" required>
-  </div>
-  <div>
-    <label>Password</label>
-    <input type="password" name="password" required>
-  </div>
-  
-  <input type="submit" value="Register">
+<form action="/users/<%= user.id %>" method="POST">
+    <label for="firstname">First Name</label>
+    <input type="text" name="firstname" placeholder="Enter you first name" value="<%= user.firstname %>" required>
+
+    <label for="lastname">Last Name</label>
+    <input type="text" name="lastname" placeholder="Enter you last name" value="<%= user.lastname %>" required>
+
+    <label for="email">Email</label>
+    <input type="email" name="email" placeholder="Enter you email" value="<%= user.email %>" required>
+
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="Enter you password" value="<%= user.password %>" required>
+
+    <input type="submit" value="Save User">
 </form>

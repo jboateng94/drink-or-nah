@@ -11,7 +11,7 @@ function newUser(req,res) {
     password: ""
   }
 
-  res.render("posts/new" , {
+  res.render("users/new" , {
     title: "Register",
     user: newUser
   });
@@ -32,5 +32,9 @@ function createUser(req,res){
     res.redirect("/");
 
   });
+}
 
+module.exports = {
+	new: newUser,
+	create: createUser
 }

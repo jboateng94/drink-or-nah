@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var beersController = require('../controllers/beers');
+var usersController = require('../controllers/users');
 
 // users
 router.route('/users')
