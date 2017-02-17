@@ -4,7 +4,7 @@ function indexBeers(req, res) {
 	
 	Beer.find({} , function(err, beers) {
 		console.log(beers)
-		if(err) return res.status(500).send(err);
+		if(err) req.flash('error' , err.message);
 		res.render("beers/index" , {
 			title: "All teh beers",
 			beers: beers
@@ -15,7 +15,7 @@ function indexBeers(req, res) {
 function showBeers(req, res) {
 	Beer.findById(req.params.id , function(err, beer) {
 		if(!beer) return res.status(404).send("Not found");
-      	if(err) return res.status(500).send(err);
+		if(err) req.flash('error' , err.message);
 	    res.render("beers/show",{
 	    	title: beer.name,
 	        beer: beer
@@ -41,7 +41,7 @@ function newBeers(req , res) {
 
 function createBeers(req, res) {
 	Beer.create(req.body, function(err, beer){
-		if(err) return res.status(500).send(err);
+		if(err) req.flash('error' , err.message);
 		res.redirect("/");
 	});
 }
@@ -49,7 +49,7 @@ function createBeers(req, res) {
 function editBeers(req, res) {
 	Beer.findById(req.params.id , function(err, beer) {
 	    if(!beer) return res.status(404).send("Not found");
-	    if(err) return res.status(500).send(err);
+		if(err) req.flash('error' , err.message);
 	    res.render("beers/edit" , {
 	      title: "Edit beer info",
 	      beer: beer
@@ -63,7 +63,7 @@ function updateBeers(req, res) {
 	    { $set:  req.body },
 	    { runValidators: true },
 	    function(err , car){
-	      if(err) return res.status(500).send(err);
+		  if(err) req.flash('error' , err.message);
 	      res.redirect("/");
 	    }
 	);
@@ -71,6 +71,7 @@ function updateBeers(req, res) {
 
 function deleteBeers(req, res) {
 	Beer.findByIdAndRemove(req.params.id , function(err) {
+		if(err) req.flash('error' , err.message);
 		res.redirect("/");
 	});
 }
