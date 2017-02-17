@@ -6,15 +6,13 @@ var layouts = require('express-ejs-layouts');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 
 var port = process.env.PORT || 3000;
 
 mongoose.connect('mongodb://localhost/beer', function() {
 	console.log('beer database connected.')
 })
-
-// add support for cookies
-app.use(cookieParser());
 
 app.set('view engine', 'ejs');
 
@@ -30,6 +28,19 @@ app.use(methodOverride(function (req, res) {
     return method
   }
 }))
+
+// add support for cookies
+app.use(cookieParser());
+
+app.use(session({
+  resave: false,
+  saveUninitialized: true,
+  secret: 'spartasupersecretkey'
+}));
+
+
+
+
 
 app.use(router);
 
