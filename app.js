@@ -84,6 +84,32 @@ app.use(function(req, res, next){
     next();
 });
 
+app.use(function(req,res,next) {
+
+  // no user id? just move on
+  if(!req.session.user) {
+     res.locals.user = false;
+    next();
+  } else {
+
+    // load the user with the ID in the session
+    User.findById(req.session.user , function(err, user){
+
+      if(user) {
+        // add the user to the request object
+        req.user = user;
+        // add it to locals so we can use it in all templates
+        res.locals.user = user;
+      } else {
+        // couldn't find it... that's weird. clear the session
+        req.session.user = null;
+      }
+
+      next(err);
+    });
+  }
+});
+
 app.use(router);
 
 app.listen(port, function() {

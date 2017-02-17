@@ -1,5 +1,15 @@
-<nav class="nav">
-	<a href="/">Drink or Nah?</a>
-	<a href="">login</a>
-	<a href="/users/new">Register</a>
+
+<nav>
+  <% if(user) { %>
+    <a href="/">Drink or Nah?</a>
+    <a href="/new">Add a beer</a>
+    <form action="/sessions" method="POST">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Logout">
+    </form>
+    <p>Welcome, <%= user.firstname %></p>
+  <% } else { %>
+    <a href="/sessions/new">Login</a>
+    <<a href="/users/new"Register</a>
+  <% } %>
 </nav>
