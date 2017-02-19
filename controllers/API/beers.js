@@ -1,11 +1,11 @@
-var Beer = require('../models/beer');
+var Beer = require('../../models/beer');
 
 function indexBeers(req, res) {
 	
 	Beer.find({} , function(err, beers) {
 		console.log(beers)
 		if(err) return res.status(500).json({error: err.message});
-		res.render( , {
+		res.status(200).json({
 			message: "Here's the beers",
 			//title: "All teh beers",
 			beers: beers

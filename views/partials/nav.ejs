@@ -3,6 +3,7 @@
   <% if(user) { %>
     <a href="/">Drink or Nah?</a>
     <a href="/new">Add a beer</a>
+    <a href="/api/beers">API</a>
     <form action="/sessions" method="POST">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Logout">
@@ -12,4 +13,5 @@
     <a href="/sessions/new">Login</a>
     <a href="/users/new">Register</a>
   <% } %>
+
 </nav>

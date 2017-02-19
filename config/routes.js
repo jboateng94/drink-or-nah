@@ -7,13 +7,13 @@ var beersApiController = require('../controllers/api/beers');
 
 // api
 router.route('/api/beers')
-      .get(beersApiController.index)
-      .post(beersApiController.create);
+  .get(beersApiController.index)
+  .post(beersApiController.create);
 
 router.route('/api/beers/:id')
-      .get(beersApiController.show)
-      .put(beersApiController.update)
-      .delete(beersApiController.delete);
+  .get(beersApiController.show)
+  .put(beersApiController.update)
+  .delete(beersApiController.delete);
 
 // sessions
 router.route('/sessions')
