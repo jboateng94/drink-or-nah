@@ -1,17 +1,31 @@
 
-<nav>
-  <% if(user) { %>
-    <a href="/">Drink or Nah?</a>
-    <a href="/new">Add a beer</a>
-    <a href="/api/beers">API</a>
-    <form action="/sessions" method="POST">
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="Logout">
-    </form>
-    <p>Welcome, <%= user.first_name %></p>
-  <% } else { %>
-    <a href="/sessions/new">Login</a>
-    <a href="/users/new">Register</a>
-  <% } %>
 
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" id="test">
+      <li class="nav-item">
+        <a href="/" class="title"><i class="fa fa-beer fa-3x" aria-hidden="true">  Drink or Nah? </i></a>
+      </li>
+      <% if(user) { %>
+        <li class="nav-item"><a href="/new"><button class="btn btn-outline-success" type="button">Add a beer</button></a>
+        </li>
+        <li class="nav-item"><a href="/api/beers"><button class="btn btn-outline-success" type="button">API</button></a>
+        </li>
+        <li class="nav-item"> <form action="/sessions" method="POST">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Logout">
+        </form>
+        </li>
+      	<p>Welcome, <%= user.first_name %></p>
+      <% } else { %>
+        <li class="nav-item">
+          <a href="/sessions/new"><button class="btn btn-outline-success" type="button">Login</button></a>
+        </li>
+        <li class="nav-item">
+          <a href="/users/new"><button class="btn btn-outline-success" type="button">Register</button></a>
+        </li>
+      <% } %>
+    </ul>
+  </div>
 </nav>
+
