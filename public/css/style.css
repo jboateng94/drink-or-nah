@@ -40,5 +40,16 @@ body{
 .form{
 	/*float: left;*/
 	display: inline;
-	
+}
+
+i{
+	padding-top: 20px;
+}
+
+.default-btns{
+	padding-top: 25px;
+}
+
+.button-section{
+	padding: 30px;
 }

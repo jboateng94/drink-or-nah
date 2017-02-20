@@ -1,28 +1,33 @@
 
-<nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar sticky-top  navbar-light" style="background-color: #e3f2fd;">
 	<a href="/" class="title"><i class="fa fa-beer fa-3x" aria-hidden="true">  Drink or Nah? </i></a>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<form class="form-inline my-2 my-lg-0">
-			<% if(user) { %>
+		<% if(user) { %>
+			<div class="nav-right">
 
-				<p class='first-name'> Welcome, <%= user.first_name %></p>
+				<form action="/sessions" method="POST">
+					<input type="hidden" name="_method" value="delete">
+					<input type="submit" value="Logout">
+				</form>
 
-				<div class="nav-right">
+				
+					<p class='first-name'> Welcome, <%= user.first_name %></p>
+
+				<form class="form-inline my-2 my-lg-0">
+
+					
 					<a href="/users/<%= user.id %>"><button class="btn btn-outline-success" type="button">Your Page</button></a>
 				
 					<a href="/new"><button class="btn btn-outline-success" type="button">Add a beer</button></a>
 					<a href="/api/beers"><button class="btn btn-outline-success" type="button">API</button></a>
-					<form action="/sessions" method="POST">
-						<input type="hidden" name="_method" value="delete">
-						<input type="submit" value="Logout">
-					</form>
+
 				<% } else { %>
 					<div class='default-btns'>
 						<a href="/sessions/new"><button class="btn btn-outline-success" type="button">Login</button></a>
 						<a href="/users/new"><button class="btn btn-outline-success" type="button">Register</button></a>
 					</div>
 				</div>
-			<% } %>
-		</form>
+			</form>
+		<% } %>
 	</div>
 </nav>
