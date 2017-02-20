@@ -12,9 +12,9 @@ function createUser(req,res){
 
   // save the user
   var user = new User(req.body);
+  console.log(user);
 
   user.save(function(err,user){
-
     // check for errors and return 500 if there was a problem
     if(err) req.flash('error' , err.message);
 

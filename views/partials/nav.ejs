@@ -1,31 +1,27 @@
 
+<nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #e3f2fd;">
+	<a href="/" class="title"><i class="fa fa-beer fa-3x" aria-hidden="true">  Drink or Nah? </i></a>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<form class="form-inline my-2 my-lg-0">
+			<% if(user) { %>
 
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto" id="test">
-      <li class="nav-item">
-        <a href="/" class="title"><i class="fa fa-beer fa-3x" aria-hidden="true">  Drink or Nah? </i></a>
-      </li>
-      <% if(user) { %>
-        <li class="nav-item"><a href="/new"><button class="btn btn-outline-success" type="button">Add a beer</button></a>
-        </li>
-        <li class="nav-item"><a href="/api/beers"><button class="btn btn-outline-success" type="button">API</button></a>
-        </li>
-        <li class="nav-item"> <form action="/sessions" method="POST">
-          <input type="hidden" name="_method" value="delete">
-          <input type="submit" value="Logout">
-        </form>
-        </li>
-      	<p>Welcome, <%= user.first_name %></p>
-      <% } else { %>
-        <li class="nav-item">
-          <a href="/sessions/new"><button class="btn btn-outline-success" type="button">Login</button></a>
-        </li>
-        <li class="nav-item">
-          <a href="/users/new"><button class="btn btn-outline-success" type="button">Register</button></a>
-        </li>
-      <% } %>
-    </ul>
-  </div>
+				<p class='first-name'> Welcome, <%= user.first_name %></p>
+
+				<div class="nav-right">
+				
+					<a href="/new"><button class="btn btn-outline-success" type="button">Add a beer</button></a>
+					<a href="/api/beers"><button class="btn btn-outline-success" type="button">API</button></a>
+					<form action="/sessions" method="POST">
+						<input type="hidden" name="_method" value="delete">
+						<input type="submit" value="Logout">
+					</form>
+				<% } else { %>
+					<div class='default-btns'>
+						<a href="/sessions/new"><button class="btn btn-outline-success" type="button">Login</button></a>
+						<a href="/users/new"><button class="btn btn-outline-success" type="button">Register</button></a>
+					</div>
+				</div>
+			<% } %>
+		</form>
+	</div>
 </nav>
-

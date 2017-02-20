@@ -52,7 +52,6 @@ app.use(session({
 
 // load logged in user
 app.use(function(req,res,next) {
-
   // no user id? just move on
   if(!req.session.user) {
   	 res.locals.user = false;
@@ -82,7 +81,6 @@ app.use(flash());
 app.use(function(req, res, next){
     // res.locals will be available in every template
     res.locals.errors = req.flash('error');
-    console.log(res.locals.errors);
     next();
 });
 
@@ -115,7 +113,7 @@ app.use(function(req,res,next) {
 
 app.use(function(req, res, next) {
   var urls = ["/sessions/new", "/users/new", "/sessions", "/users"];
-  if(urls.indexOf(req.url) === -1) {
+  if(urls.indexOf(req.url) === -1 || (/\/api/g).test(req.url)) {
     if (!req.user) return res.redirect('/sessions/new');
   }
   next();

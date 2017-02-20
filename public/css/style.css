@@ -1,8 +1,34 @@
-#test{
+body{
+	text-align: center;
+}
+
+.bar{
 	text-decoration: none;
 }
 
 .login-box{
 	width: 100vh;
 	text-align: center;
+}
+
+.title{
+	float:left;
+	margin-left: 100px;
+
+}
+
+.nav-right{
+	float: right;
+	margin-right: 100px;
+}
+
+.first-name{
+	display: inline;
+	font-size: 35px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.default-btns{
+	float: right;
+	margin-right: 100px;
 }

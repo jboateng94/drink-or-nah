@@ -13,6 +13,7 @@ router.route('/api/beers')
 router.route('/api/beers/:id')
   .get(beersApiController.show)
   .put(beersApiController.update)
+  .patch(beersApiController.fave)
   .delete(beersApiController.delete);
 
 // sessions

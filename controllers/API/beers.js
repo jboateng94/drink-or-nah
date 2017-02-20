@@ -1,4 +1,19 @@
 var Beer = require('../../models/beer');
+var User = require('../../models/user');
+
+function faveBeers(req, res) {
+	User.findByIdAndUpdate(
+		req.user._id, 
+		{ $addToSet: { beers: req.body.beer}},
+		{ new: true},
+		function(err, user) {
+			if(err) return res.status(500).json({error: err.message});
+			res.status(200).json({
+				user: user,
+				message: "Successful like"
+			});
+		});
+}
 
 function indexBeers(req, res) {
 	
@@ -66,5 +81,6 @@ module.exports = {
 	show: showBeers,
 	create: createBeers,
 	update: updateBeers,
-	delete: deleteBeers
+	delete: deleteBeers,
+	fave: faveBeers 
 }
