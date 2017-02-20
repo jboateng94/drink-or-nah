@@ -2,6 +2,7 @@ var Beer = require('../../models/beer');
 var User = require('../../models/user');
 
 function faveBeers(req, res) {
+	// var upOrDown = (req.body.up ==="true") ? 1 : -1
 	User.findByIdAndUpdate(
 		req.user._id, 
 		{ $addToSet: { beers: req.params.id}},

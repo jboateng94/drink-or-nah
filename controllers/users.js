@@ -20,7 +20,6 @@ function createUser(req,res){
 
     // redirect to the posts index page
     res.redirect("/");
-
   });
 
 }
@@ -36,6 +35,8 @@ function showUser(req, res) {
         });
     }); 
 }
+
+
 
 module.exports = {
   new: newUser,
