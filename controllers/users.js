@@ -25,7 +25,20 @@ function createUser(req,res){
 
 }
 
+// SHOW USER
+function showUser(req, res) {
+    User.findById(req.params.id).populate('beers').exec(function(err, user) {
+        if(!user) return res.status(404).send("Not found");
+        if(err) return res.status(500).send(err);
+        res.render("users/show" , {
+            title: "User",
+            user: user
+        });
+    }); 
+}
+
 module.exports = {
   new: newUser,
-  create: createUser
+  create: createUser,
+  show: showUser
 }

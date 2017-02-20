@@ -31,6 +31,8 @@ router.route('/users')
 router.route('/users/new')
   .get(usersController.new);
 
+router.route('/users/:id')
+  .get(usersController.show);
 // beers
 router.route('/')
   .get(beersController.index)

@@ -4,13 +4,13 @@ var User = require('../../models/user');
 function faveBeers(req, res) {
 	User.findByIdAndUpdate(
 		req.user._id, 
-		{ $addToSet: { beers: req.body.beer}},
+		{ $addToSet: { beers: req.params.id}},
 		{ new: true},
 		function(err, user) {
 			if(err) return res.status(500).json({error: err.message});
 			res.status(200).json({
 				user: user,
-				message: "Successful like"
+				message: "Successfully favourited"
 			});
 		});
 }

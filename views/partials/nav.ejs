@@ -8,6 +8,7 @@
 				<p class='first-name'> Welcome, <%= user.first_name %></p>
 
 				<div class="nav-right">
+					<a href="/users/<%= user.id %>"><button class="btn btn-outline-success" type="button">Your Page</button></a>
 				
 					<a href="/new"><button class="btn btn-outline-success" type="button">Add a beer</button></a>
 					<a href="/api/beers"><button class="btn btn-outline-success" type="button">API</button></a>
