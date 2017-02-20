@@ -32,3 +32,13 @@ body{
 	float: right;
 	margin-right: 100px;
 }
+
+.index{
+	margin: 20px;
+}
+
+.form{
+	/*float: left;*/
+	display: inline;
+	
+}

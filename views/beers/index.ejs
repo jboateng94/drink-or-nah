@@ -1,14 +1,18 @@
 
 
+<div class="container-fluid">
+	<div class="row">
+		<% for(var i = 0; i < beers.length; i++ ) { %>
+			<div class="col-sm-4 m-4 l-4">
+			 	<div class="card index" style="width: 25rem; display: inline;" >
+				  <a href="/<%= beers[i].id %>"><img class="card-img-top" src="<%= beers[i].image_url %>" style="height: 300px" alt="No image"></a>
+				  <div class="card-block">
+				    <h4 class="card-title"><a href="/<%= beers[i].id %>"><%= beers[i].name %></a></h4>
+				  </div>
+				</div>
+			</div>
+		<% } %>
+	</div>
+</div>
 
-<% for(var i = 0; i < beers.length; i++ ) { %>
- 	<% console.log(beers);  %>
-  <div>
-  	<img src="<% beers[i].image_url %>">
-    <h2><a href="/<%= beers[i].id %>"><%= beers[i].name %></a></h3>
-    <p><%= beers[i].tagline %></p>
-    <p><%= beers[i].abv %></p>
-    <p><%= beers[i].description %></p>
-  </div>
-<% } %>
 
