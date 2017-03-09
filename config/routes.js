@@ -3,7 +3,7 @@ var router = express.Router();
 var beersController = require('../controllers/beers');
 var usersController = require('../controllers/users');
 var sessionsController = require('../controllers/sessions');
-var beersApiController = require('../controllers/api/beers');
+var beersApiController = require('../controllers/API/beers');
 
 // api
 router.route('/api/beers')
